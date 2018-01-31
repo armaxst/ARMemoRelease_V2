@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<TextView
+		android:id="@+id/camera_resolution"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"/>
+
+	<ImageView
+		android:id="@+id/capture_image_view"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="fitXY"
+		android:visibility="gone"/>
+
+	<com.maxstar.ardrawing.app.FingerPaintView
+		android:id="@+id/ar_drawing_view"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+
+	<Button
+		android:id="@+id/capture_image"
+		android:layout_width="150dp"
+		android:layout_height="80dp"
+		android:layout_alignParentRight="true"
+		android:text="Capture Image"/>
+
+	<Button
+		android:id="@+id/learn_image"
+		android:layout_width="150dp"
+		android:layout_height="80dp"
+		android:layout_alignParentRight="true"
+		android:layout_below="@id/capture_image"
+		android:text="Learn Image"/>
+
+	<Button
+		android:id="@+id/start_tracker"
+		android:layout_width="150dp"
+		android:layout_height="80dp"
+		android:layout_alignParentRight="true"
+		android:layout_below="@id/learn_image"
+		android:text="Start tracker"/>
+
+	<Button
+		android:id="@+id/capture_debug"
+		android:layout_width="150dp"
+		android:layout_height="80dp"
+		android:layout_alignParentRight="true"
+		android:layout_below="@id/start_tracker"
+		android:text="Capture debug"/>
+
+	<ImageView
+		android:id="@+id/debug_capture_view"
+		android:layout_width="160dp"
+		android:layout_height="90dp"
+		android:scaleType="centerCrop"
+		android:visibility="gone"/>
+
+	<TextView
+		android:id="@+id/engine_version"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_marginLeft="15dp"
+		android:layout_marginBottom="15dp"
+		android:textColor="@android:color/white"/>
+
+</RelativeLayout>
