@@ -14,3 +14,10 @@ Samples/ARDrawingWindows/ARDrawingApp/ARDrawingApp.opensdf
 Samples/ARDrawingWindows/ARDrawingApp/ARDrawingApp/x64/Debug/
 Samples/ARDrawingWindows/ARDrawingApp/ARDrawingApp/~AutoRecover.ARDrawingApp.vcxproj
 Samples/ARDrawingWindows/ARDrawingApp/x64/Debug/
+Samples/ARMemoWindows/ARMemoApp/x64/Release/
+Samples/ARMemoWindows/ARMemoWindows.opensdf
+Samples/ARMemoWindows/ARMemoWindows.sdf
+*.armemo
+Samples/ARMemoWindows/ARMemoApp/Release/
+Samples/ARMemoWindows/Release/
+Samples/ARMemoWindows/x64/Release/
