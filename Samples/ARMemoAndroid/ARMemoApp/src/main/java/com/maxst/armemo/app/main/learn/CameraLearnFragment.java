@@ -5,7 +5,6 @@
 package com.maxst.armemo.app.main.learn;
 
 import android.app.Activity;
-import android.content.res.Configuration;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +22,7 @@ import com.google.gson.Gson;
 import com.maxst.armemo.ARMemo;
 import com.maxst.armemo.ResultCode;
 import com.maxst.armemo.app.R;
+import com.maxst.armemo.app.StrokesData;
 import com.maxst.armemo.app.cameracontroller.CameraController;
 import com.maxst.armemo.app.cameracontroller.CameraFrame;
 import com.maxst.armemo.app.cameracontroller.NewCameraFrameCallback;
@@ -279,7 +279,8 @@ public class CameraLearnFragment extends ARMemoFragment {
 
 		//region ---- save strokes file
 		Gson gson = new Gson();
-		String jsonString = gson.toJson(imagePointList);
+		StrokesData strokesData = new StrokesData(cameraWidth, cameraHeight, imagePointList);
+		String jsonString = gson.toJson(strokesData);
 
 		File rootDir = new File(ARMemoUtils.ROOT_PATH);
 		if (!rootDir.exists()) {
@@ -349,6 +350,7 @@ public class CameraLearnFragment extends ARMemoFragment {
 		learnImage.setEnabled(false);
 		learnClear.setEnabled(false);
 		fingerPaintView.clearCanvas();
+		fingerPaintView.clearTouchPoint();
 		fingerPaintView.enableTouch(false);
 	}
 

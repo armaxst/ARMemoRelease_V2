@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.maxst.armemo.ARMemo;
 import com.maxst.armemo.app.R;
+import com.maxst.armemo.app.StrokesData;
 import com.maxst.armemo.app.cameracontroller.CameraController;
 import com.maxst.armemo.app.cameracontroller.NewCameraFrameCallback;
 import com.maxst.armemo.app.cameracontroller.SurfaceManager;
@@ -214,11 +215,12 @@ public class CameraTrackingFragment extends Fragment {
 			fileInputStream.close();
 
 			String jsonString = new String(strokeBytes);
-			Type touchPointType = new TypeToken<List<List<Point>>>() {
+			Type strokesType = new TypeToken<StrokesData>() {
 			}.getType();
 			Gson gson = new Gson();
-			List<List<Point>> touchPointList = gson.fromJson(jsonString, touchPointType);
-			fingerPaintView.setTouchPointList(touchPointList);
+			StrokesData strokes = gson.fromJson(jsonString, strokesType);
+			learnToTrackingStrokes(strokes);
+			fingerPaintView.setTouchPointList(strokes.strokes);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -233,6 +235,24 @@ public class CameraTrackingFragment extends Fragment {
 
 		int result = ARMemo.setTrackingFile(ARMemoUtils.TRACKABLE_FILE_NAME);
 		Log.d(TAG, "setTrackingFile result : " + result);
+	}
+
+	private void learnToTrackingStrokes(StrokesData strokesData) {
+		int srcW = strokesData.imageWidth;
+		int srcH = strokesData.imageHeight;
+		int dstW = actualCameraWidth;
+		int dstH = actualCameraHeight;
+
+		float wr = (float) dstW / srcW;
+		float hr = (float) dstH / srcH;
+		float halfDiffHeight = (srcH * wr - dstH) / 2.f;
+
+		for (List<Point> points : strokesData.strokes) {
+			for (Point point : points) {
+				point.x = (int) (point.x * wr);
+				point.y = (int) (point.y * wr - halfDiffHeight);
+			}
+		}
 	}
 
 	boolean needToResizeCameraSurfaceView = true;
