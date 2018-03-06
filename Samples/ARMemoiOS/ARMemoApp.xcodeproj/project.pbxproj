@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7121B5E22032B405008550A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7121B5E12032B405008550A7 /* AppDelegate.swift */; };
+		7121B5E72032B405008550A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7121B5E52032B405008550A7 /* Main.storyboard */; };
+		7121B5E92032B405008550A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7121B5E82032B405008550A7 /* Assets.xcassets */; };
+		7121B5EC2032B405008550A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7121B5EA2032B405008550A7 /* LaunchScreen.storyboard */; };
+		716767C22032DFD0007B0471 /* ARMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716767C12032DFD0007B0471 /* ARMemoViewController.swift */; };
+		7178AC0D203D2E5B005DCCA5 /* DataFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178AC0C203D2E5B005DCCA5 /* DataFileManager.swift */; };
+		7185B9292033BF2900FAFB5B /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185B9282033BF2900FAFB5B /* LearnViewController.swift */; };
+		7185B92B2033FF7A00FAFB5B /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185B92A2033FF7A00FAFB5B /* CaptureViewController.swift */; };
+		7185B92D2034074800FAFB5B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7185B92C2034074800FAFB5B /* Utilities.swift */; };
+		718A737D204D433000E09253 /* btn_eraser_pre@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718A7378204D433000E09253 /* btn_eraser_pre@3x.png */; };
+		718A737E204D433000E09253 /* btn_drawing_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718A7379204D433000E09253 /* btn_drawing_nor@3x.png */; };
+		718A737F204D433000E09253 /* btn_drawing_pre@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718A737A204D433000E09253 /* btn_drawing_pre@3x.png */; };
+		718A7380204D433000E09253 /* btn_eraser_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718A737B204D433000E09253 /* btn_eraser_nor@3x.png */; };
+		718A7381204D433000E09253 /* icon_before_navi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 718A737C204D433000E09253 /* icon_before_navi@3x.png */; };
+		718A7384204D438B00E09253 /* ARMemoFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718A7382204D438A00E09253 /* ARMemoFramework.framework */; };
+		718A7385204D438B00E09253 /* ARMemoFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 718A7382204D438A00E09253 /* ARMemoFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		718A7386204D438B00E09253 /* MaxstARSDKFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 718A7383204D438A00E09253 /* MaxstARSDKFramework.framework */; };
+		718A7387204D438B00E09253 /* MaxstARSDKFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 718A7383204D438A00E09253 /* MaxstARSDKFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71BA64EF203EBD41003C8FB5 /* TrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BA64EE203EBD41003C8FB5 /* TrackingViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		718A7388204D438B00E09253 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				718A7385204D438B00E09253 /* ARMemoFramework.framework in Embed Frameworks */,
+				718A7387204D438B00E09253 /* MaxstARSDKFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		7121B5DE2032B405008550A7 /* ARMemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARMemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7121B5E12032B405008550A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7121B5E62032B405008550A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7121B5E82032B405008550A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7121B5EB2032B405008550A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7121B5ED2032B405008550A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		716767C12032DFD0007B0471 /* ARMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMemoViewController.swift; sourceTree = "<group>"; };
+		7178AC0C203D2E5B005DCCA5 /* DataFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFileManager.swift; sourceTree = "<group>"; };
+		7185B9282033BF2900FAFB5B /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
+		7185B92A2033FF7A00FAFB5B /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		7185B92C2034074800FAFB5B /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		718A7378204D433000E09253 /* btn_eraser_pre@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_eraser_pre@3x.png"; sourceTree = "<group>"; };
+		718A7379204D433000E09253 /* btn_drawing_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_drawing_nor@3x.png"; sourceTree = "<group>"; };
+		718A737A204D433000E09253 /* btn_drawing_pre@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_drawing_pre@3x.png"; sourceTree = "<group>"; };
+		718A737B204D433000E09253 /* btn_eraser_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_eraser_nor@3x.png"; sourceTree = "<group>"; };
+		718A737C204D433000E09253 /* icon_before_navi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_before_navi@3x.png"; sourceTree = "<group>"; };
+		718A7382204D438A00E09253 /* ARMemoFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARMemoFramework.framework; path = ../../Build/lib/iOS/ARMemoFramework.framework; sourceTree = "<group>"; };
+		718A7383204D438A00E09253 /* MaxstARSDKFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaxstARSDKFramework.framework; path = ../../Build/lib/iOS/MaxstARSDKFramework.framework; sourceTree = "<group>"; };
+		71BA64EE203EBD41003C8FB5 /* TrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7121B5DB2032B405008550A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				718A7384204D438B00E09253 /* ARMemoFramework.framework in Frameworks */,
+				718A7386204D438B00E09253 /* MaxstARSDKFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7121B5D52032B405008550A7 = {
+			isa = PBXGroup;
+			children = (
+				718A7382204D438A00E09253 /* ARMemoFramework.framework */,
+				718A7383204D438A00E09253 /* MaxstARSDKFramework.framework */,
+				7121B5E02032B405008550A7 /* ARMemoApp */,
+				718A7377204D433000E09253 /* Resources */,
+				7121B5DF2032B405008550A7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7121B5DF2032B405008550A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7121B5DE2032B405008550A7 /* ARMemoApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7121B5E02032B405008550A7 /* ARMemoApp */ = {
+			isa = PBXGroup;
+			children = (
+				7185B92C2034074800FAFB5B /* Utilities.swift */,
+				7178AC0C203D2E5B005DCCA5 /* DataFileManager.swift */,
+				7121B5E12032B405008550A7 /* AppDelegate.swift */,
+				716767C12032DFD0007B0471 /* ARMemoViewController.swift */,
+				7185B9282033BF2900FAFB5B /* LearnViewController.swift */,
+				7185B92A2033FF7A00FAFB5B /* CaptureViewController.swift */,
+				71BA64EE203EBD41003C8FB5 /* TrackingViewController.swift */,
+				7121B5E52032B405008550A7 /* Main.storyboard */,
+				7121B5E82032B405008550A7 /* Assets.xcassets */,
+				7121B5EA2032B405008550A7 /* LaunchScreen.storyboard */,
+				7121B5ED2032B405008550A7 /* Info.plist */,
+			);
+			path = ARMemoApp;
+			sourceTree = "<group>";
+		};
+		718A7377204D433000E09253 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				718A7378204D433000E09253 /* btn_eraser_pre@3x.png */,
+				718A7379204D433000E09253 /* btn_drawing_nor@3x.png */,
+				718A737A204D433000E09253 /* btn_drawing_pre@3x.png */,
+				718A737B204D433000E09253 /* btn_eraser_nor@3x.png */,
+				718A737C204D433000E09253 /* icon_before_navi@3x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7121B5DD2032B405008550A7 /* ARMemoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7121B5F02032B405008550A7 /* Build configuration list for PBXNativeTarget "ARMemoApp" */;
+			buildPhases = (
+				7121B5DA2032B405008550A7 /* Sources */,
+				7121B5DB2032B405008550A7 /* Frameworks */,
+				7121B5DC2032B405008550A7 /* Resources */,
+				718A7388204D438B00E09253 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ARMemoApp;
+			productName = ARMemoApp;
+			productReference = 7121B5DE2032B405008550A7 /* ARMemoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7121B5D62032B405008550A7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Ray;
+				TargetAttributes = {
+					7121B5DD2032B405008550A7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 7121B5D92032B405008550A7 /* Build configuration list for PBXProject "ARMemoApp" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7121B5D52032B405008550A7;
+			productRefGroup = 7121B5DF2032B405008550A7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7121B5DD2032B405008550A7 /* ARMemoApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7121B5DC2032B405008550A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				718A737E204D433000E09253 /* btn_drawing_nor@3x.png in Resources */,
+				7121B5EC2032B405008550A7 /* LaunchScreen.storyboard in Resources */,
+				7121B5E92032B405008550A7 /* Assets.xcassets in Resources */,
+				718A737D204D433000E09253 /* btn_eraser_pre@3x.png in Resources */,
+				7121B5E72032B405008550A7 /* Main.storyboard in Resources */,
+				718A7381204D433000E09253 /* icon_before_navi@3x.png in Resources */,
+				718A7380204D433000E09253 /* btn_eraser_nor@3x.png in Resources */,
+				718A737F204D433000E09253 /* btn_drawing_pre@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7121B5DA2032B405008550A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7185B92D2034074800FAFB5B /* Utilities.swift in Sources */,
+				71BA64EF203EBD41003C8FB5 /* TrackingViewController.swift in Sources */,
+				7185B9292033BF2900FAFB5B /* LearnViewController.swift in Sources */,
+				7178AC0D203D2E5B005DCCA5 /* DataFileManager.swift in Sources */,
+				716767C22032DFD0007B0471 /* ARMemoViewController.swift in Sources */,
+				7121B5E22032B405008550A7 /* AppDelegate.swift in Sources */,
+				7185B92B2033FF7A00FAFB5B /* CaptureViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7121B5E52032B405008550A7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7121B5E62032B405008550A7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7121B5EA2032B405008550A7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7121B5EB2032B405008550A7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7121B5EE2032B405008550A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7121B5EF2032B405008550A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7121B5F12032B405008550A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = LY4A66983H;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../Build/lib/iOS";
+				INFOPLIST_FILE = ARMemoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maxst.armemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "dea6744e-f76c-4493-b774-87c1ccbe940e";
+				PROVISIONING_PROFILE_SPECIFIER = "Ray's WildCard";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7121B5F22032B405008550A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = LY4A66983H;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../Build/lib/iOS";
+				INFOPLIST_FILE = ARMemoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maxst.armemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "dea6744e-f76c-4493-b774-87c1ccbe940e";
+				PROVISIONING_PROFILE_SPECIFIER = "Ray's WildCard";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7121B5D92032B405008550A7 /* Build configuration list for PBXProject "ARMemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7121B5EE2032B405008550A7 /* Debug */,
+				7121B5EF2032B405008550A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7121B5F02032B405008550A7 /* Build configuration list for PBXNativeTarget "ARMemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7121B5F12032B405008550A7 /* Debug */,
+				7121B5F22032B405008550A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7121B5D62032B405008550A7 /* Project object */;
+}
