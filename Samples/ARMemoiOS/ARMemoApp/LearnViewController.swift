@@ -164,9 +164,18 @@ class LearnViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
     
     //MARK: - Private Function
     private func initUIObject() {
-        backButton.layer.borderWidth = 1.0
+        backButton.layer.borderWidth = 0.75
+        backButton.layer.borderColor = UIColor.init(white: 0.55, alpha: 1.0).cgColor
         backButton.layer.cornerRadius = CGFloat(roundf(Float(backButton.frame.size.width / 2.0)))
         backButton.layer.masksToBounds = true
+        backButton.setBackgroundImage(Utilites.imageWithColor(color: UIColor.init(red: 0, green: 195/255.0, blue: 179/255.0, alpha: 1.0)), for: UIControlState.highlighted)
+        
+        trackingButton.layer.borderWidth = 0.75
+        trackingButton.layer.borderColor = UIColor.init(white: 0.55, alpha: 1.0).cgColor
+        trackingButton.layer.cornerRadius = CGFloat(roundf(Float(backButton.frame.size.width / 2.0)))
+        trackingButton.layer.masksToBounds = true
+        trackingButton.setBackgroundImage(Utilites.imageWithColor(color: UIColor.init(red: 0, green: 195/255.0, blue: 179/255.0, alpha: 1.0)), for: UIControlState.highlighted)
+
         
         drawingView.backgroundColor = UIColor.clear
         drawingView.isHidden = true

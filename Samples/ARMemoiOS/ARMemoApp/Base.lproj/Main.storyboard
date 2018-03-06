@@ -142,7 +142,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tx-Li-BKj">
                                 <rect key="frame" x="15" y="15" width="40" height="40"/>
-                                <color key="backgroundColor" white="0.59999999999999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.15030924479999999" alpha="0.30267016270000002" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="235-jE-HD2"/>
                                     <constraint firstAttribute="width" constant="40" id="tLK-fZ-1fN"/>
@@ -152,12 +152,14 @@
                                     <action selector="clickBackButton:" destination="AqQ-aa-97Q" eventType="touchUpInside" id="9Vi-CS-e42"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzv-L9-ZsL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wzv-L9-ZsL">
                                 <rect key="frame" x="612" y="15" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.15030924479166666" alpha="0.30267016267123281" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="A8V-LK-flQ"/>
                                     <constraint firstAttribute="width" constant="40" id="uD4-hl-o7D"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="changeTrackingState:" destination="AqQ-aa-97Q" eventType="touchUpInside" id="MAH-ea-ZFv"/>

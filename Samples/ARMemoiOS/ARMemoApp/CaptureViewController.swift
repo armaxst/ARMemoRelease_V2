@@ -34,15 +34,15 @@ class CaptureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        okButton.layer.borderWidth = 1.0
-        okButton.layer.borderColor = UIColor.black.cgColor
+        okButton.layer.borderWidth = 0.75
+        okButton.layer.borderColor = UIColor.init(white: 0.55, alpha: 1.0).cgColor
         okButton.layer.cornerRadius = 5.0
         okButton.layer.masksToBounds = true
         okButton.setBackgroundImage(Utilites.imageWithColor(color: UIColor.init(red: 0, green: 195/255.0, blue: 179/255.0, alpha: 1.0)), for: UIControlState.highlighted)
         
 
-        cancelButton.layer.borderWidth = 1.0
-        cancelButton.layer.borderColor = UIColor.black.cgColor
+        cancelButton.layer.borderWidth = 0.75
+        cancelButton.layer.borderColor = UIColor.init(white: 0.55, alpha: 1.0).cgColor
         cancelButton.layer.cornerRadius = 5.0
         cancelButton.layer.masksToBounds = true
         cancelButton.setBackgroundImage(Utilites.imageWithColor(color: UIColor.init(red: 0, green: 195/255.0, blue: 179/255.0, alpha: 1.0)), for: UIControlState.highlighted)
