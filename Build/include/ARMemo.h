@@ -45,12 +45,12 @@ namespace armemo {
 	/**
 	* @brief start Engine thread.
 	*/
-	ARMEMO_API int startTracking();
+	ARMEMO_API int start();
 
 	/**
 	* @brief stop Engine thread.
 	*/
-	ARMEMO_API int stopTracking();
+	ARMEMO_API int stop();
 
 	/*****************************************************************************/
 	/*                             Learner function.                             */

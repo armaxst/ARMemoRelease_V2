@@ -42,7 +42,16 @@ class LearnViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.isHidden = true
-        ARMemo.initialize("w8EoHToosk/K/2dhysr8Zg/5IBlBjwe8YXgoUDJMfmY=")
+        let state : Int32 = ARMemo.initialize("w8EoHToosk/K/2dhysr8Zg/5IBlBjwe8YXgoUDJMfmY=")
+        if state != 0
+        {
+            let alert = UIAlertController(title: "Error", message: "App Signature is not Correct.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:
+                { (action: UIAlertAction) in
+                    exit(0)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
         
         screenWidth = Int32(self.view.frame.size.width)
         screenHeight = Int32(self.view.frame.size.height)
@@ -75,7 +84,7 @@ class LearnViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         super.viewWillDisappear(animated)
         
         captureSession?.stopRunning()
-        ARMemo.stopTracking()
+        ARMemo.stop()
         ARMemo.destory()
     }
     
@@ -104,7 +113,7 @@ class LearnViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
             trackingButton.setTitle("Stop", for: UIControlState.normal)
             captureButton.isHidden = false
            
-            ARMemo.startTracking()
+            ARMemo.start()
         }
         else
         {
@@ -124,7 +133,7 @@ class LearnViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
             captureButton.isHidden = true
             clearButton.isHidden = true
             
-            ARMemo.stopTracking()
+            ARMemo.stop()
         }
     }
     @IBAction func clickCaptureButton(_ sender: Any) {
@@ -391,6 +400,12 @@ class LearnViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
                         shapeLayer.lineWidth = 3.0
                         
                         self.drawingView.layer.addSublayer(shapeLayer)
+                    }
+                }
+                else
+                {
+                    DispatchQueue.main.async {
+                        self.drawingView.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
                     }
                 }
                 
