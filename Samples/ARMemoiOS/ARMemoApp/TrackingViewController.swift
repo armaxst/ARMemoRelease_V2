@@ -36,6 +36,17 @@ class TrackingViewController: UIViewController, AVCaptureVideoDataOutputSampleBu
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.isHidden = true
         
+        let state : Int32 = ARMemo.initialize("w8EoHToosk/K/2dhysr8Zg/5IBlBjwe8YXgoUDJMfmY=")
+        if state != 0
+        {
+            let alert = UIAlertController(title: "Error", message: "App Signature is not Correct.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:
+                { (action: UIAlertAction) in
+                    exit(0)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
         screenWidth = Int32(self.view.frame.size.width)
         screenHeight = Int32(self.view.frame.size.height)
         
@@ -59,8 +70,7 @@ class TrackingViewController: UIViewController, AVCaptureVideoDataOutputSampleBu
         videoPreviewLayer?.frame = view.layer.bounds
         previewView.layer.addSublayer(videoPreviewLayer!)
         
-        ARMemo.initialize("w8EoHToosk/K/2dhysr8Zg/5IBlBjwe8YXgoUDJMfmY=")
-        ARMemo.startTracking()
+        ARMemo.start()
         let trackableFilePath = DataFileManager.getTrackableDataPath()
         ARMemo.setTrackingFile(trackableFilePath)
         
@@ -305,7 +315,7 @@ class TrackingViewController: UIViewController, AVCaptureVideoDataOutputSampleBu
         captureSession?.stopRunning()
         ARMemo.clearTrackingTrackable()
         
-        ARMemo.stopTracking()
+        ARMemo.stop()
         ARMemo.destory()
         
         self.navigationController?.popViewController(animated: true)

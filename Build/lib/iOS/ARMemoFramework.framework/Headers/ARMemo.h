@@ -14,8 +14,8 @@
 + (int) initialize : (NSString *) appSignature;
 + (int) destory;
 
-+ (int) startTracking;
-+ (int) stopTracking;
++ (int) start;
++ (int) stop;
 
 + (int) checkLearnable : (Byte *) image length:(int) length width:(int) width height:(int) height format:(int) pixelFormat;
 + (int) learn : (Byte *) image length:(int) length width:(int) width height:(int) height format:(int) pixelFormat strokeInfo : (NSArray *) stroke size : (int) size;
