@@ -1,0 +1,15 @@
+﻿[2018.03.09]
+1. 버그 수정
+	- 해상도 변경시 인식/추적 잘 안되는 현상
+	- Sample App 해상도 설정 버그 수정(Android)
+	- Sample App, saveLearnedFile 호출 방식 변경 (Android)
+	- stroke 정보 save / load 방식 수정 및 계산식 추가 (Android)
+	- ARMemo.initalize() : signature valid check return vlaue 추가 (Android)
+2. 변경사항	
+	- startTracking/stopTracking => start/stop
+3. 배포
+	- iOS : 최초 배포
+	
+[2018.02.23]
+1. 배포 
+	- Android/window : 최초 배포
