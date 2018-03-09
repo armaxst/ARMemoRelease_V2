@@ -136,12 +136,12 @@ void main() {
 	double fps = capture.get(CV_CAP_PROP_FPS);
 #endif
 
-	apiResultCode = armemo::startTracking();
+	apiResultCode = armemo::start();
 	if (apiResultCode != 0) {
-		cout << "startTracking fail, error code : " << apiResultCode << endl;
+		cout << "start fail, error code : " << apiResultCode << endl;
 		return;
 	}
-	cout << "startTracking success" << endl;
+	cout << "start success" << endl;
 
 	cv::Mat image;
 	cv::Mat captureImage;
@@ -304,7 +304,7 @@ void main() {
 
 			case START_TRACKING:
 				state = TRACKING;
-				armemo::startTracking();
+				armemo::start();
 				apiResultCode = armemo::setTrackingFile("uplus.armemo");
 
 				if (apiResultCode == 0) {
@@ -380,12 +380,12 @@ void main() {
 			case STOP_TRACKING:
 				armemo::clearLearnedTrackable();
 				armemo::clearTrackingTrackable();
-				apiResultCode = armemo::stopTracking();
+				apiResultCode = armemo::stop();
 
 				if (apiResultCode == 0) {
 				}
 				else {
-					cout << "stopTracking fail, error code : " << apiResultCode << endl;
+					cout << "stop fail, error code : " << apiResultCode << endl;
 				}
 
 				state = IDLE;
@@ -395,7 +395,7 @@ void main() {
 				state = IDLE;
 				armemo::clearLearnedTrackable();
 				armemo::clearTrackingTrackable();
-				armemo::stopTracking();
+				armemo::stop();
 				armemo::destroy();
 
 				if (capture.get(cv::CAP_PROP_FRAME_HEIGHT) == 480) {
@@ -412,13 +412,13 @@ void main() {
 				}
 
 				armemo::initialize();
-				armemo::startTracking();
+				armemo::start();
 
 				break;
 			case EXIT:
 				armemo::clearLearnedTrackable();
 				armemo::clearTrackingTrackable();
-				armemo::stopTracking();
+				armemo::stop();
 				armemo::destroy();
 
 				isLoop = false;

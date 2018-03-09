@@ -1,0 +1,6 @@
+framework module ARMemoFramework {
+  umbrella header "ARMemoFramework.h"
+
+  export *
+  module * { export * }
+}

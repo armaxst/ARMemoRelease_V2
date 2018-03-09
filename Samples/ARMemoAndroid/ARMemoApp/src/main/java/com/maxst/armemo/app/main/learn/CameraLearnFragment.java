@@ -5,7 +5,6 @@
 package com.maxst.armemo.app.main.learn;
 
 import android.app.Activity;
-import android.content.res.Configuration;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +22,7 @@ import com.google.gson.Gson;
 import com.maxst.armemo.ARMemo;
 import com.maxst.armemo.ResultCode;
 import com.maxst.armemo.app.R;
+import com.maxst.armemo.app.StrokesData;
 import com.maxst.armemo.app.cameracontroller.CameraController;
 import com.maxst.armemo.app.cameracontroller.CameraFrame;
 import com.maxst.armemo.app.cameracontroller.NewCameraFrameCallback;
@@ -66,8 +66,8 @@ public class CameraLearnFragment extends ARMemoFragment {
 	@BindView(R.id.learn_image)
 	Button learnImage;
 
-	@BindView(R.id.start_tracker)
-	Button startTracker;
+	@BindView(R.id.start_engine)
+	Button startEngine;
 
 	@BindView(R.id.clear)
 	Button learnClear;
@@ -97,6 +97,7 @@ public class CameraLearnFragment extends ARMemoFragment {
 
 		unbinder = ButterKnife.bind(this, view);
 
+		startEngine.setEnabled(false);
 		captureImage.setEnabled(false);
 		learnImage.setEnabled(false);
 		learnClear.setEnabled(false);
@@ -128,8 +129,12 @@ public class CameraLearnFragment extends ARMemoFragment {
 		cameraResolution.setText(String.format(Locale.US, "Camera resolution %dx%d", cameraWidth, cameraHeight));
 
 		int result = ARMemo.initialize(getActivity(), getString(R.string.app_key));
-		Log.e(TAG, "initialize : " + result);
-		//ARMemoDebug.setDebugMode(true); //for armemo debug log
+		if (result == ResultCode.INVALID_APP) {
+			Toast.makeText(getActivity(), "Invalid App Signature", Toast.LENGTH_LONG).show();
+			Log.e(TAG, "initialize : " + result);
+		} else {
+			startEngine.setEnabled(true);
+		}
 		return view;
 	}
 
@@ -167,8 +172,8 @@ public class CameraLearnFragment extends ARMemoFragment {
 			Log.e(TAG, "clearLearnedTrackable : " + result);
 		}
 		if (trackerAlive) {
-			result = ARMemo.stopTracking();
-			Log.e(TAG, "stopTracking : " + result);
+			result = ARMemo.stop();
+			Log.e(TAG, "stop : " + result);
 		}
 		result = ARMemo.destroy();
 		Log.e(TAG, "destroy : " + result);
@@ -279,7 +284,8 @@ public class CameraLearnFragment extends ARMemoFragment {
 
 		//region ---- save strokes file
 		Gson gson = new Gson();
-		String jsonString = gson.toJson(imagePointList);
+		StrokesData strokesData = new StrokesData(cameraWidth, cameraHeight, imagePointList);
+		String jsonString = gson.toJson(strokesData);
 
 		File rootDir = new File(ARMemoUtils.ROOT_PATH);
 		if (!rootDir.exists()) {
@@ -306,15 +312,15 @@ public class CameraLearnFragment extends ARMemoFragment {
 		new ImageLearnTask(CameraLearnFragment.this).execute(cameraFrameForLearn);
 	}
 
-	@OnClick(R.id.start_tracker)
-	public void startTracking() {
+	@OnClick(R.id.start_engine)
+	public void startEngine() {
 		if (!trackerAlive) {
-			int result = ARMemo.startTracking();
-			Log.e(TAG, "startTracking : " + result);
+			int result = ARMemo.start();
+			Log.e(TAG, "start : " + result);
 			trackerAlive = true;
 
 			captureImage.setEnabled(true);
-			startTracker.setText("Stop tracker");
+			startEngine.setText("Stop");
 		} else {
 			//if capture iamge showing
 			if (learnImage.isEnabled()) {
@@ -329,14 +335,14 @@ public class CameraLearnFragment extends ARMemoFragment {
 				trackableClear();
 			}
 
-			int result = ARMemo.stopTracking();
-			Log.e(TAG, "stopTracking : " + result);
+			int result = ARMemo.stop();
+			Log.e(TAG, "stop : " + result);
 			trackerAlive = false;
 
 			captureImage.setEnabled(false);
 			learnImage.setEnabled(false);
 			learnClear.setEnabled(false);
-			startTracker.setText("Start tracker");
+			startEngine.setText("Start");
 		}
 	}
 
@@ -349,6 +355,7 @@ public class CameraLearnFragment extends ARMemoFragment {
 		learnImage.setEnabled(false);
 		learnClear.setEnabled(false);
 		fingerPaintView.clearCanvas();
+		fingerPaintView.clearTouchPoint();
 		fingerPaintView.enableTouch(false);
 	}
 

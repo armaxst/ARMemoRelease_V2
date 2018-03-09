@@ -1,0 +1,6 @@
+framework module MaxstARSDKFramework {
+  umbrella header "MaxstARSDKFramework.h"
+
+  export *
+  module * { export * }
+}
