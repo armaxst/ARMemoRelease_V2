@@ -24,12 +24,12 @@
         android:textColor="@android:color/white" />
 
     <Button
-        android:id="@+id/start_tracker"
+        android:id="@+id/start_engine"
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="Start tracker" />
+        android:text="Start" />
 
     <Button
         android:id="@+id/capture_image"
@@ -37,7 +37,7 @@
         android:layout_height="70dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/start_tracker"
+        android:layout_below="@id/start_engine"
         android:text="Capture Image"/>
 
     <Button

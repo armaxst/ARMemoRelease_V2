@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
-					.replace(android.R.id.content, SettingsFragment.newInstance(), this.toString())
+					.replace(android.R.id.content, MainFragment.newInstance(), this.toString())
 					.commit();
 		}
 	}
