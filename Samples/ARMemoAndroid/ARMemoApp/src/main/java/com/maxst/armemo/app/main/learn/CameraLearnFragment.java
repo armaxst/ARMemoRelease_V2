@@ -51,6 +51,10 @@ public class CameraLearnFragment extends ARMemoFragment {
 
 	private static final String TAG = CameraLearnFragment.class.getSimpleName();
 
+
+	@BindView(R.id.dump_image_view)
+	ImageView dumpImageView;
+
 	@BindView(R.id.camera_resolution)
 	TextView cameraResolution;
 
@@ -71,6 +75,9 @@ public class CameraLearnFragment extends ARMemoFragment {
 
 	@BindView(R.id.clear)
 	Button learnClear;
+
+	@BindView(R.id.clear_dump)
+	Button clearDump;
 
 	private Unbinder unbinder;
 	private TrackingResultRenderHandler renderHandler;
@@ -101,6 +108,7 @@ public class CameraLearnFragment extends ARMemoFragment {
 		captureImage.setEnabled(false);
 		learnImage.setEnabled(false);
 		learnClear.setEnabled(false);
+		clearDump.setEnabled(false);
 
 		SurfaceManager.init();
 		SystemUtil.init(getActivity());
@@ -188,6 +196,9 @@ public class CameraLearnFragment extends ARMemoFragment {
 
 			cameraFrameForLearn = newFrame;
 
+			dumpImageView.setImageBitmap(ARMemoUtils.yuvToBitmap(getContext(), cameraFrameForLearn.imageBuffer, cameraFrameForLearn.width, cameraFrameForLearn.height));
+
+
 			captureImageView.setImageBitmap(ARMemoUtils.yuvToBitmap(getContext(), newFrame.imageBuffer, newFrame.width, newFrame.height));
 			captureImageView.setVisibility(View.VISIBLE);
 			ARMemoUtils.resizeView(getResources(), captureImageView, cameraFrameForLearn.width, cameraFrameForLearn.height);
@@ -212,6 +223,7 @@ public class CameraLearnFragment extends ARMemoFragment {
 			Log.i(TAG, "Learning success!");
 			learnImage.setEnabled(false);
 			learnClear.setEnabled(true);
+			clearDump.setEnabled(true);
 
 			isLearned = true;
 			result = ARMemo.setTrackingFile(ARMemoUtils.TRACKABLE_FILE_NAME);
@@ -359,17 +371,31 @@ public class CameraLearnFragment extends ARMemoFragment {
 		fingerPaintView.enableTouch(false);
 	}
 
+	@OnClick(R.id.clear_dump)
+	public void clearDump() {
+		dumpImageView.setImageResource(android.R.color.black);
+		cameraFrameForLearn = null;
+		clearDump.setEnabled(false);
+	}
+
 	@Override
 	public void getCameraFrame(CameraFrame frame) {
+		CameraFrame srcFrame;
+		if (cameraFrameForLearn != null) {
+			srcFrame = cameraFrameForLearn;
+		} else {
+			srcFrame = cameraFrame;
+		}
+
 		imageCaptureLock.lock();
 		if (frame.imageBuffer == null) {
-			frame.imageBuffer = cameraFrame.imageBuffer.clone();
-			frame.length = cameraFrame.length;
-			frame.width = cameraFrame.width;
-			frame.height = cameraFrame.height;
-			frame.pixelFormat = cameraFrame.pixelFormat;
+			frame.imageBuffer = srcFrame.imageBuffer.clone();
+			frame.length = srcFrame.length;
+			frame.width = srcFrame.width;
+			frame.height = srcFrame.height;
+			frame.pixelFormat = srcFrame.pixelFormat;
 		} else {
-			System.arraycopy(cameraFrame.imageBuffer, 0, frame.imageBuffer, 0, frame.length);
+			System.arraycopy(srcFrame.imageBuffer, 0, frame.imageBuffer, 0, frame.length);
 		}
 		imageCaptureLock.unlock();
 	}

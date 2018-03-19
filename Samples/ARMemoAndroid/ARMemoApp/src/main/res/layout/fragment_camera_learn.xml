@@ -9,6 +9,13 @@
         android:layout_height="match_parent"
         android:scaleType="fitXY" />
 
+    <ImageView
+        android:id="@+id/dump_image_view"
+        android:layout_width="180dp"
+        android:layout_height="100dp"
+        android:background="@color/colorBlack"
+        android:scaleType="fitXY" />
+
     <com.maxst.armemo.app.main.learn.FingerPaintView
         android:id="@+id/ar_drawing_view"
         android:layout_width="match_parent"
@@ -57,4 +64,13 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:text="clear"/>
+
+    <Button
+        android:id="@+id/clear_dump"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/clear"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:text="clear capture frame"/>
 </RelativeLayout>
