@@ -1,4 +1,13 @@
-﻿[2.1]
+﻿[2.2]
+1. 버그 수정
+	- Invalid operation 체크 추가
+	- load YUV image 학습과정 버그 수정
+	
+2. 변경사항
+	- saveLearnFile inprogress return code 추가
+	- checklearnable 입력 parameter를 IN/OUT으로 변경
+	
+[2.1]
 1. 버그 수정
 	- 해상도 변경시 인식/추적 잘 안되는 현상
 	- Sample App 해상도 설정 버그 수정(Android)
