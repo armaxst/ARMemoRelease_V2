@@ -20,6 +20,10 @@ public class ImageLearnTask extends AsyncTask<CameraFrame, Void, Integer> {
 
 	private WeakReference<ARMemoFragment> arMemoFragmentWeakReference;
 
+	private static final int MAX_CHECK_COUNT = 5;
+	private int tryCount = 0;
+
+
 	public ImageLearnTask(ARMemoFragment fragment) {
 		arMemoFragmentWeakReference = new WeakReference<>(fragment);
 	}
@@ -36,16 +40,24 @@ public class ImageLearnTask extends AsyncTask<CameraFrame, Void, Integer> {
 				fragment.touchStroke, fragment.touchStroke.length / 2);
 		Log.d(TAG, "learn result : " + result);
 		if (result == ResultCode.SUCCESS) {
-			result = ARMemo.saveLearnedFile(ARMemoUtils.TRACKABLE_FILE_NAME);
-			Log.d(TAG, "saveLearnedFile result : " + result);
-			if (result == ResultCode.SUCCESS) {
-				result = ARMemo.clearLearnedTrackable();
-				Log.d(TAG, "clearLearnedTrackable result : " + result);
-				return ResultCode.SUCCESS;
-			} else {
-				Log.e(TAG, "saveLearnedFile fail");
+
+			while (tryCount++ < MAX_CHECK_COUNT) {
+				try {
+					Thread.sleep(30);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+				result = ARMemo.saveLearnedFile(ARMemoUtils.TRACKABLE_FILE_NAME);
+				Log.d(TAG, "saveLearnedFile result : " + result);
+				if (result == ResultCode.SUCCESS) {
+					result = ARMemo.clearLearnedTrackable();
+					Log.d(TAG, "clearLearnedTrackable result : " + result);
+					return ResultCode.SUCCESS;
+				}
 			}
-		} else {
+		}
+		 else {
 			Log.e(TAG, "learn : " + result);
 		}
 		//fail!!

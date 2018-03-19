@@ -36,7 +36,6 @@ class DataFileManager
             return false
         }
         
-        NSLog("Data Directory is \(directoryFullPath)")
         fileDirectory = directoryFullPath
         return true
     }

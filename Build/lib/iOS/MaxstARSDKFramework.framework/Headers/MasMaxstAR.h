@@ -25,7 +25,7 @@ typedef NS_ENUM(int, MasScreenOrientation) {
  * @brief Initialize AR engine
  * @param appKey app key for this app generated from "developer.maxst.com" (Mobile only)
  */
-+ (void) init:(NSString*) appKey;
++ (int) init:(NSString*) appKey;
 
 /**
  * @brief Deinitialize AR Engine

@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.maxst.armemo.ARMemo;
+import com.maxst.armemo.ResultCode;
 import com.maxst.armemo.app.R;
 import com.maxst.armemo.app.StrokesData;
 import com.maxst.armemo.app.cameracontroller.CameraController;
@@ -51,8 +52,8 @@ public class CameraTrackingFragment extends Fragment {
 	@BindView(R.id.ar_drawing_view)
 	FingerPaintView fingerPaintView;
 
-	@BindView(R.id.start_tracker)
-	Button startTracker;
+	@BindView(R.id.start_engine)
+	Button startEngine;
 
 	@BindView(R.id.camera_resolution)
 	TextView cameraResolution;
@@ -87,6 +88,7 @@ public class CameraTrackingFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_camera_tracking, container, false);
 		unbinder = ButterKnife.bind(this, view);
 
+		startEngine.setEnabled(false);
 		fingerPaintView.enableTouch(false);
 
 		SurfaceManager.init();
@@ -115,7 +117,12 @@ public class CameraTrackingFragment extends Fragment {
 
 		cameraResolution.setText(String.format(Locale.US, "Camera resolution %dx%d", preferCameraWidth, preferCameraHeight));
 		int result = ARMemo.initialize(getActivity(), getString(R.string.app_key));
-		Log.e(TAG, "initialize : " + result);
+		if (result == ResultCode.INVALID_APP) {
+			Toast.makeText(getActivity(), "Invalid App Signature", Toast.LENGTH_LONG).show();
+			Log.e(TAG, "initialize : " + result);
+		} else {
+			startEngine.setEnabled(true);
+		}
 		return view;
 	}
 
@@ -149,7 +156,7 @@ public class CameraTrackingFragment extends Fragment {
 
 		if (trackerAlive) {
 			ARMemo.clearTrackingTrackable();
-			ARMemo.stopTracking();
+			ARMemo.stop();
 		}
 		ARMemo.destroy();
 
@@ -175,25 +182,25 @@ public class CameraTrackingFragment extends Fragment {
 		ARMemoUtils.resizeView(getResources(), fingerPaintView, actualCameraWidth, actualCameraHeight);
 	}
 
-	@OnClick(R.id.start_tracker)
-	public void startTracking() {
+	@OnClick(R.id.start_engine)
+	public void startEngine() {
 		if (!trackerAlive) {
-			int result = ARMemo.startTracking();
-			Log.e(TAG, "startTracking : " + result);
+			int result = ARMemo.start();
+			Log.e(TAG, "start : " + result);
 
 			loadTrackableFile();
 			trackerAlive = true;
-			startTracker.setText("Stop tracker");
+			startEngine.setText("Stop");
 		} else {
 			int result = ARMemo.clearTrackingTrackable();
 			Log.e(TAG, "clearTrackingTrackable : " + result);
 
-			result = ARMemo.stopTracking();
-			Log.e(TAG, "stopTracking : " + result);
+			result = ARMemo.stop();
+			Log.e(TAG, "stop : " + result);
 			trackerAlive = false;
 
 			fingerPaintView.clearCanvas();
-			startTracker.setText("Start tracker");
+			startEngine.setText("Start");
 		}
 	}
 

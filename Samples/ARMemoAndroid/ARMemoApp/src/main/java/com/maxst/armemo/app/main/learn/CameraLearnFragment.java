@@ -51,6 +51,10 @@ public class CameraLearnFragment extends ARMemoFragment {
 
 	private static final String TAG = CameraLearnFragment.class.getSimpleName();
 
+
+	@BindView(R.id.dump_image_view)
+	ImageView dumpImageView;
+
 	@BindView(R.id.camera_resolution)
 	TextView cameraResolution;
 
@@ -66,11 +70,14 @@ public class CameraLearnFragment extends ARMemoFragment {
 	@BindView(R.id.learn_image)
 	Button learnImage;
 
-	@BindView(R.id.start_tracker)
-	Button startTracker;
+	@BindView(R.id.start_engine)
+	Button startEngine;
 
 	@BindView(R.id.clear)
 	Button learnClear;
+
+	@BindView(R.id.clear_dump)
+	Button clearDump;
 
 	private Unbinder unbinder;
 	private TrackingResultRenderHandler renderHandler;
@@ -97,9 +104,11 @@ public class CameraLearnFragment extends ARMemoFragment {
 
 		unbinder = ButterKnife.bind(this, view);
 
+		startEngine.setEnabled(false);
 		captureImage.setEnabled(false);
 		learnImage.setEnabled(false);
 		learnClear.setEnabled(false);
+		clearDump.setEnabled(false);
 
 		SurfaceManager.init();
 		SystemUtil.init(getActivity());
@@ -128,8 +137,12 @@ public class CameraLearnFragment extends ARMemoFragment {
 		cameraResolution.setText(String.format(Locale.US, "Camera resolution %dx%d", cameraWidth, cameraHeight));
 
 		int result = ARMemo.initialize(getActivity(), getString(R.string.app_key));
-		Log.e(TAG, "initialize : " + result);
-		//ARMemoDebug.setDebugMode(true); //for armemo debug log
+		if (result == ResultCode.INVALID_APP) {
+			Toast.makeText(getActivity(), "Invalid App Signature", Toast.LENGTH_LONG).show();
+			Log.e(TAG, "initialize : " + result);
+		} else {
+			startEngine.setEnabled(true);
+		}
 		return view;
 	}
 
@@ -167,8 +180,8 @@ public class CameraLearnFragment extends ARMemoFragment {
 			Log.e(TAG, "clearLearnedTrackable : " + result);
 		}
 		if (trackerAlive) {
-			result = ARMemo.stopTracking();
-			Log.e(TAG, "stopTracking : " + result);
+			result = ARMemo.stop();
+			Log.e(TAG, "stop : " + result);
 		}
 		result = ARMemo.destroy();
 		Log.e(TAG, "destroy : " + result);
@@ -182,6 +195,9 @@ public class CameraLearnFragment extends ARMemoFragment {
 			cameraController.stop();
 
 			cameraFrameForLearn = newFrame;
+
+			dumpImageView.setImageBitmap(ARMemoUtils.yuvToBitmap(getContext(), cameraFrameForLearn.imageBuffer, cameraFrameForLearn.width, cameraFrameForLearn.height));
+
 
 			captureImageView.setImageBitmap(ARMemoUtils.yuvToBitmap(getContext(), newFrame.imageBuffer, newFrame.width, newFrame.height));
 			captureImageView.setVisibility(View.VISIBLE);
@@ -207,6 +223,7 @@ public class CameraLearnFragment extends ARMemoFragment {
 			Log.i(TAG, "Learning success!");
 			learnImage.setEnabled(false);
 			learnClear.setEnabled(true);
+			clearDump.setEnabled(true);
 
 			isLearned = true;
 			result = ARMemo.setTrackingFile(ARMemoUtils.TRACKABLE_FILE_NAME);
@@ -307,15 +324,15 @@ public class CameraLearnFragment extends ARMemoFragment {
 		new ImageLearnTask(CameraLearnFragment.this).execute(cameraFrameForLearn);
 	}
 
-	@OnClick(R.id.start_tracker)
-	public void startTracking() {
+	@OnClick(R.id.start_engine)
+	public void startEngine() {
 		if (!trackerAlive) {
-			int result = ARMemo.startTracking();
-			Log.e(TAG, "startTracking : " + result);
+			int result = ARMemo.start();
+			Log.e(TAG, "start : " + result);
 			trackerAlive = true;
 
 			captureImage.setEnabled(true);
-			startTracker.setText("Stop tracker");
+			startEngine.setText("Stop");
 		} else {
 			//if capture iamge showing
 			if (learnImage.isEnabled()) {
@@ -330,14 +347,14 @@ public class CameraLearnFragment extends ARMemoFragment {
 				trackableClear();
 			}
 
-			int result = ARMemo.stopTracking();
-			Log.e(TAG, "stopTracking : " + result);
+			int result = ARMemo.stop();
+			Log.e(TAG, "stop : " + result);
 			trackerAlive = false;
 
 			captureImage.setEnabled(false);
 			learnImage.setEnabled(false);
 			learnClear.setEnabled(false);
-			startTracker.setText("Start tracker");
+			startEngine.setText("Start");
 		}
 	}
 
@@ -354,17 +371,31 @@ public class CameraLearnFragment extends ARMemoFragment {
 		fingerPaintView.enableTouch(false);
 	}
 
+	@OnClick(R.id.clear_dump)
+	public void clearDump() {
+		dumpImageView.setImageResource(android.R.color.black);
+		cameraFrameForLearn = null;
+		clearDump.setEnabled(false);
+	}
+
 	@Override
 	public void getCameraFrame(CameraFrame frame) {
+		CameraFrame srcFrame;
+		if (cameraFrameForLearn != null) {
+			srcFrame = cameraFrameForLearn;
+		} else {
+			srcFrame = cameraFrame;
+		}
+
 		imageCaptureLock.lock();
 		if (frame.imageBuffer == null) {
-			frame.imageBuffer = cameraFrame.imageBuffer.clone();
-			frame.length = cameraFrame.length;
-			frame.width = cameraFrame.width;
-			frame.height = cameraFrame.height;
-			frame.pixelFormat = cameraFrame.pixelFormat;
+			frame.imageBuffer = srcFrame.imageBuffer.clone();
+			frame.length = srcFrame.length;
+			frame.width = srcFrame.width;
+			frame.height = srcFrame.height;
+			frame.pixelFormat = srcFrame.pixelFormat;
 		} else {
-			System.arraycopy(cameraFrame.imageBuffer, 0, frame.imageBuffer, 0, frame.length);
+			System.arraycopy(srcFrame.imageBuffer, 0, frame.imageBuffer, 0, frame.length);
 		}
 		imageCaptureLock.unlock();
 	}
