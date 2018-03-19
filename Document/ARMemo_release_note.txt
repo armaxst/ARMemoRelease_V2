@@ -1,9 +1,11 @@
 ﻿[2.2]
 1. 버그 수정
 	- Invalid operation 체크 추가
+	- load YUV image 학습과정 버그 수정
 	
 2. 변경사항
 	- saveLearnFile inprogress return code 추가
+	- checklearnable 입력 parameter를 IN/OUT으로 변경
 	
 [2.1]
 1. 버그 수정
