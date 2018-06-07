@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/learn"
+        android:layout_width="200dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="40dp"
+        android:text="Learn"
+        app:layout_constraintBottom_toTopOf="@id/radio_group_learn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tracking"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/tracking"
+        android:layout_width="200dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="40dp"
+        android:text="Tracking"
+        app:layout_constraintBottom_toTopOf="@id/radio_group_learn"
+        app:layout_constraintLeft_toRightOf="@id/learn"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_learn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tracking">
+
+        <RadioButton
+            android:id="@+id/sd_resolution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="SD" />
+
+        <RadioButton
+            android:id="@+id/hd_resolution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="HD" />
+
+        <RadioButton
+            android:id="@+id/full_hd_resolution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Full HD" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/resolution_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Camera resolution"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_group_learn" />
+</android.support.constraint.ConstraintLayout>

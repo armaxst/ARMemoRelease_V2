@@ -22,3 +22,5 @@ Samples/ARMemoWindows/ARMemoApp/Release/
 Samples/ARMemoWindows/Release/
 Samples/ARMemoWindows/x64/Release/
 Samples/ARMemoWindows/ARMemoWindows.v12.suo
+Samples/ARMemoAndroid/ARMemoJNIApp/obj/
+Samples/ARMemoAndroid/ARMemoJNIApp/libs/armeabi-v7a/
