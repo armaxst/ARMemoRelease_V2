@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ARMemoJNIApp</string>
+    <string name="app_key">hhBREaXYNbZnABQeVjkjSGeYVEbM8mquZAkcJEq4xEE=</string>
+    <string name="sd_resolution">640x480</string>
+    <string name="hd_resolution">1280x720</string>
+    <string name="full_hd_resolution">1920x1080</string>
+</resources>
