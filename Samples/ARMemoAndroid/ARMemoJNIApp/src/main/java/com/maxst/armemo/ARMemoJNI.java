@@ -26,10 +26,26 @@ public class ARMemoJNI {
 	static {
 		System.loadLibrary("ARMemoJNI");
 	}
+
 	/**
 	 * Only for android app
 	 */
-	public static native int initialize(Context context, String appSignature);
+	public static int initializeAndroid(Context context, String appSignature) {
+		if (MaxstAR.isInitialized()) {
+			return ResultCode.ENGINE_ALREADY_INITIALIZED;
+		}
+		if (MaxstAR.init(context, appSignature) == 2) {
+			return initialize();
+		} else {
+			return ResultCode.INVALID_APP;
+		}
+	}
+
+	/**
+	 * Initialize tracker engine
+	 * @return result
+	 */
+	public static native int initialize();
 
 	/**
 	 * @brief Destroy engine.

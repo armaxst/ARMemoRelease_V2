@@ -135,7 +135,9 @@ public class CameraLearnFragment extends ARMemoFragment {
 
 		cameraResolution.setText(String.format(Locale.US, "Camera resolution %dx%d", cameraWidth, cameraHeight));
 
-		int result = ARMemoJNI.initialize(getContext(), getString(R.string.app_key));
+		int result = ARMemoJNI.initializeAndroid(getContext(), getString(R.string.app_key));
+		// TODO : In case of windows app call just initialize
+		//int result = ARMemoJNI.initialize();
 		if (result == ResultCode.INVALID_APP) {
 			Toast.makeText(getActivity(), "Invalid App Signature", Toast.LENGTH_LONG).show();
 			Log.e(TAG, "initialize : " + result);

@@ -9,13 +9,9 @@ using namespace armemo;
 extern "C"
 {
 	JNIEXPORT jint JNICALL Java_com_maxst_armemo_ARMemoJNI_initialize
-		(JNIEnv * env, jclass obj, jobject context, jstring appKey)
+		(JNIEnv * env, jclass obj)
 	{
-#ifdef __ANDROID__
-		return ResultCode::INVALID_APP;
-#else
 		return armemo::initialize();
-#endif
 	}
 
 	JNIEXPORT jint JNICALL Java_com_maxst_armemo_ARMemoJNI_destroy
