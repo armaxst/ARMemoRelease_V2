@@ -182,6 +182,8 @@ public class CameraLearnFragment extends ARMemoFragment {
 		if (trackerAlive) {
 			result = ARMemo.stop();
 			Log.e(TAG, "stop : " + result);
+			result = ARMemo.stopSensor();
+			Log.e(TAG, "stopSensor : " + result);
 		}
 		result = ARMemo.destroy();
 		Log.e(TAG, "destroy : " + result);
@@ -329,6 +331,8 @@ public class CameraLearnFragment extends ARMemoFragment {
 		if (!trackerAlive) {
 			int result = ARMemo.start();
 			Log.e(TAG, "start : " + result);
+			result = ARMemo.startSensor();
+			Log.e(TAG, "startSensor : " + result);
 			trackerAlive = true;
 
 			captureImage.setEnabled(true);
@@ -349,6 +353,8 @@ public class CameraLearnFragment extends ARMemoFragment {
 
 			int result = ARMemo.stop();
 			Log.e(TAG, "stop : " + result);
+			result = ARMemo.stopSensor();
+			Log.e(TAG, "stopSensor : " + result);
 			trackerAlive = false;
 
 			captureImage.setEnabled(false);
