@@ -17,6 +17,9 @@
 + (int) start;
 + (int) stop;
 
++ (int) startSensor;
++ (int) stopSensor;
+
 + (int) checkLearnable : (Byte *) image length:(int) length width:(int) width height:(int) height format:(int) pixelFormat;
 + (int) learn : (Byte *) image length:(int) length width:(int) width height:(int) height format:(int) pixelFormat strokeInfo : (NSArray *) stroke size : (int) size;
 + (int) saveLearnedFile : (NSString *) fileFullPath;
