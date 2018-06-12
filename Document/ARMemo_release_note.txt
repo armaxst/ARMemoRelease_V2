@@ -1,4 +1,8 @@
-﻿[2.2]
+﻿[2.3]
+1. 변경사항
+	- start, stop내에서 sensor 동작 처리 하던 부분 별도의 API (startSensor, stopSensor)로 분리
+	
+[2.2]
 1. 버그 수정
 	- Invalid operation 체크 추가
 	- load YUV image 학습과정 버그 수정

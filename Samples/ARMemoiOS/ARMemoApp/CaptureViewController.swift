@@ -73,16 +73,24 @@ class CaptureViewController: UIViewController {
         {
             captureImage.image = nil
         }
-        
+
         imageWidth = Int32(CVPixelBufferGetHeight(imageBuffer))
         imageHeight = Int32(CVPixelBufferGetWidth(imageBuffer))
-        
+
         var coreImage : CIImage = CIImage.init(cvImageBuffer: imageBuffer)
-        coreImage = coreImage.oriented(forExifOrientation: 3)
+        
+        if(UIDevice.current.orientation == .landscapeLeft)
+        {
+            coreImage = coreImage.oriented(forExifOrientation: 1)
+        }
+        else
+        {
+            coreImage = coreImage.oriented(forExifOrientation: 3)
+        }
 
         let tempContext : CIContext = CIContext.init(options: nil)
         let cgImage : CGImage = tempContext.createCGImage(coreImage, from: coreImage.extent)!
-        
+
         let image : UIImage = UIImage.init(cgImage: cgImage, scale: UIScreen.main.scale, orientation: UIImageOrientation.up)
 
         captureImage.contentMode = UIViewContentMode.scaleAspectFill
@@ -94,7 +102,7 @@ class CaptureViewController: UIViewController {
         drawingImage.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 2)
         drawingImage.isHidden = false
     }
-        
+    
     //MARK: - Button Action
     @IBAction func clickOKButton(_ sender: Any) {
         if totalPointArray.count == 0

@@ -83,4 +83,9 @@ class Utilites {
         UIGraphicsEndImageContext()
         return image
     }
+    
+    class func radiansFromDegrees (degrees : CGFloat) -> CGFloat
+    {
+        return degrees * 2.0 * .pi / 360.0;
+    }
 }

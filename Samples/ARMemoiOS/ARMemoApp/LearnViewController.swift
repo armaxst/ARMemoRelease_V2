@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import ARMemoFramework
+import Accelerate
 
 class LearnViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, CaptureDelegate {
     
@@ -85,6 +86,7 @@ class LearnViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         
         captureSession?.stopRunning()
         ARMemo.stop()
+        ARMemo.stopSensor()
         ARMemo.destory()
     }
     
@@ -114,6 +116,7 @@ class LearnViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
             captureButton.isHidden = false
            
             ARMemo.start()
+            ARMemo.startSensor()
         }
         else
         {
@@ -134,6 +137,7 @@ class LearnViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
             clearButton.isHidden = true
             
             ARMemo.stop()
+            ARMemo.stopSensor()
         }
     }
     @IBAction func clickCaptureButton(_ sender: Any) {
@@ -392,6 +396,8 @@ class LearnViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
 
                         let shapeLayer = CAShapeLayer()
                         
+                        
+                        shapeLayer.frame = self.view.frame
                         shapeLayer.path = totalPath.cgPath
                         shapeLayer.lineCap = "round"
                         shapeLayer.lineJoin = "round"
